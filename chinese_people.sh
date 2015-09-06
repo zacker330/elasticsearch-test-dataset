@@ -32,16 +32,37 @@ curl -X PUT  -d '{
                   "type": "string"
                 },
                 "first_name": {
-                  "type": "string"
+                  "type": "string",
+                  "index": "not_analyzed"
                 },
                 "id": {
                   "type": "long"
                 },
                 "ip_address": {
-                  "type": "string"
+                  "type": "ip"
                 },
                 "last_name": {
-                  "type": "string"
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "birthday":{
+                  "type" : "date",
+                  "format" : "YYYY-MM-dd"
+                },
+                "gender":{
+                  "type" : "string",
+                  "index": "not_analyzed"
+                },
+                "website":{
+                  "type" : "string",
+                  "index": "not_analyzed"
+                },
+                "street_address":{
+                  "type" : "string"
+                },
+                "location":{
+                  "type":"geo_point",
+                  "lat_lon": true
                 }
             }
 
@@ -52,4 +73,4 @@ curl -X PUT  -d '{
 
 echo -e "\npush test dataset"
 
-curl -X POST "$ES_TEST_HOST/_bulk" --data-binary @./chinses_people_test_data.json &>/dev/null
+curl -X POST "$ES_TEST_HOST/_bulk" --data-binary @./chinese_people_test_dataset2.json &>/dev/null
