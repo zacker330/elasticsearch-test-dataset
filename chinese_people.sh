@@ -23,7 +23,8 @@ curl -X PUT  -d '{
             "_source": {"enabled": true},
             "properties":{
                 "country": {
-                  "type": "string"
+                  "type": "string",
+                  "index": "not_analyzed"
                 },
                 "deposit": {
                   "type": "float"
